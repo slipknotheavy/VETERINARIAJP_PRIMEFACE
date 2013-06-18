@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditClienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="1">
+                    <h:outputLabel value="#{bundle.EditClienteLabel_idCliente}" for="idCliente" />
+                    <p:inputText id="idCliente" value="#{clienteController.selected.idCliente}" title="#{bundle.EditClienteTitle_idCliente}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_idCliente}"/>
+                    <p:message id="clienteidCliente" for="idCliente"/>
+                    <h:outputLabel value="#{bundle.EditClienteLabel_numeroDocumento}" for="numeroDocumento" />
+                    <p:inputText id="numeroDocumento" value="#{clienteController.selected.numeroDocumento}" title="#{bundle.EditClienteTitle_numeroDocumento}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_numeroDocumento}"/>
+                    <p:message id="clientenumeroDocumento" for="numeroDocumento"/>
+                    <h:outputLabel value="#{bundle.EditClienteLabel_nombresCliente}" for="nombresCliente" />
+                    <p:inputText id="nombresCliente" value="#{clienteController.selected.nombresCliente}" title="#{bundle.EditClienteTitle_nombresCliente}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_nombresCliente}"/>
+                    <p:message id="clientenombresCliente" for="nombresCliente"/>
+                    <h:outputLabel value="#{bundle.EditClienteLabel_apellidosCliente}" for="apellidosCliente" />
+                    <p:inputText id="apellidosCliente" value="#{clienteController.selected.apellidosCliente}" title="#{bundle.EditClienteTitle_apellidosCliente}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_apellidosCliente}"/>
+                    <p:message id="clienteapellidosCliente" for="apellidosCliente"/>
+                    <h:outputLabel value="#{bundle.EditClienteLabel_telefono}" for="telefono" />
+                    <p:inputText id="telefono" value="#{clienteController.selected.telefono}" title="#{bundle.EditClienteTitle_telefono}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_telefono}"/>
+                    <p:message id="clientetelefono" for="telefono"/>
+                    <h:outputLabel value="#{bundle.EditClienteLabel_direccion}" for="direccion" />
+                    <p:inputText id="direccion" value="#{clienteController.selected.direccion}" title="#{bundle.EditClienteTitle_direccion}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_direccion}"/>
+                    <p:message id="clientedireccion" for="numeroDocumento"/>
+                    <h:outputLabel value="#{bundle.EditClienteLabel_idTipoDocumento}" for="idTipoDocumento" />
+                    <h:selectOneMenu id="idTipoDocumento" value="#{clienteController.selected.idTipoDocumento}" title="#{bundle.EditClienteTitle_idTipoDocumento}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_idTipoDocumento}">
+                        <f:selectItems value="#{tipoDocumentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <p:commandButton action="#{clienteController.update}" value="#{bundle.EditClienteSaveLink}"/>
+                <br />
+                <br />
+                <p:button outcome="View" value="#{bundle.EditClienteViewLink}"/>
+                <br />
+                <p:commandButton action="#{clienteController.prepareList}" value="#{bundle.EditClienteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <p:button outcome="/index" value="#{bundle.EditClienteIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

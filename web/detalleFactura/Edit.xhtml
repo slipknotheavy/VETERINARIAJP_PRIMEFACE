@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDetalleFacturaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="1">
+                    <h:outputLabel value="#{bundle.EditDetalleFacturaLabel_idDetalleFactura}" for="idDetalleFactura" />
+                    <h:inputText id="idDetalleFactura" value="#{detalleFacturaController.selected.idDetalleFactura}" title="#{bundle.EditDetalleFacturaTitle_idDetalleFactura}" required="true" requiredMessage="#{bundle.EditDetalleFacturaRequiredMessage_idDetalleFactura}"/>
+                    <p:message id="detalleFacturaidDetalleFactura" for="idDetalleFactura"/>
+                    <h:outputLabel value="#{bundle.EditDetalleFacturaLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{detalleFacturaController.selected.valor}" title="#{bundle.EditDetalleFacturaTitle_valor}" required="true" requiredMessage="#{bundle.EditDetalleFacturaRequiredMessage_valor}"/>
+                    <p:message id="detalleFacturavalor" for="valor"/>
+                    <h:outputLabel value="#{bundle.EditDetalleFacturaLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{detalleFacturaController.selected.cantidad}" title="#{bundle.EditDetalleFacturaTitle_cantidad}" required="true" requiredMessage="#{bundle.EditDetalleFacturaRequiredMessage_cantidad}"/>
+                    <p:message id="detalleFacturacantidad" for="cantidad"/>
+                    <h:outputLabel value="#{bundle.EditDetalleFacturaLabel_idServicio}" for="idServicio" />
+                    <h:selectOneMenu id="idServicio" value="#{detalleFacturaController.selected.idServicio}" title="#{bundle.EditDetalleFacturaTitle_idServicio}" required="true" requiredMessage="#{bundle.EditDetalleFacturaRequiredMessage_idServicio}">
+                        <f:selectItems value="#{servicioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDetalleFacturaLabel_idFactura}" for="idFactura" />
+                    <h:selectOneMenu id="idFactura" value="#{detalleFacturaController.selected.idFactura}" title="#{bundle.EditDetalleFacturaTitle_idFactura}" required="true" requiredMessage="#{bundle.EditDetalleFacturaRequiredMessage_idFactura}">
+                        <f:selectItems value="#{facturaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <p:commandButton action="#{detalleFacturaController.update}" value="#{bundle.EditDetalleFacturaSaveLink}"/>
+                
+                <br />
+                <br />
+                <p:button outcome="View" value="#{bundle.EditDetalleFacturaViewLink}"/>
+                <br />
+                <p:commandButton action="#{detalleFacturaController.prepareList}" value="#{bundle.EditDetalleFacturaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <p:button outcome="/index" value="#{bundle.EditDetalleFacturaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

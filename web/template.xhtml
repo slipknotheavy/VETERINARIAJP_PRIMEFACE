@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+<h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+
+    <h:body>
+        <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="99" resizable="true" closable="true" collapsible="true">
+                    <div align="center" class="titulo">
+                   <h1>
+                       <ui:insert name="title">Default Title</ui:insert>
+                  </h1>
+                    </div>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="95" closable="true" collapsible="true">
+                    <div align="center" class="ocupacion">
+                    VETERINARIA JP <BR></BR>
+                    
+                    ARROYO DIANA PAOLA  "VETERINARIA" <BR></BR>
+                    VANEGAS JHON SEBASTIAN  "CIRUJANO VETERINARIO" <BR></BR>
+                    
+                    VETERINARIAJP12@GMAIL.COM
+                    </div>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="resources">
+                            <p:menuitem value="cliente" url="http://localhost:8080/veterinaria_jpa//faces/cliente/List.xhtml" />
+                            <p:menuitem value="detalleFactura" url="http://localhost:8080/veterinaria_jpa//faces/detalleFactura/List.xhtml" />
+                            <p:menuitem value="factura" url="http://localhost:8080/veterinaria_jpa//faces/factura/List.xhtml" />
+                            <p:menuitem value="mascota" url="http://localhost:8080/veterinaria_jpa//faces/mascota/List.xhtml" />
+                            <p:menuitem value="servicio" url="http://localhost:8080/veterinaria_jpa//faces/servicio/List.xhtml" />
+                            <p:menuitem value="tipoDocumento" url="http://localhost:8080/veterinaria_jpa//faces/tipoDocumento/List.xhtml" />
+                           
+                           
+                           
+                        </p:submenu>
+
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <p>
+                        <div align="center" class="ocupacion">
+                    <ui:insert name="body">Default Body</ui:insert>
+                    </div>
+                    </p>
+                    
+                </p:layoutUnit>
+
+            </p:layout>
+    </h:body>
+
+</html>

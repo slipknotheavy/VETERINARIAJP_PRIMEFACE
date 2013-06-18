@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMascotaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="1">
+                    <h:outputLabel value="#{bundle.EditMascotaLabel_idMascota}" for="idMascota" />
+                    <p:inputText id="idMascota" value="#{mascotaController.selected.idMascota}" title="#{bundle.EditMascotaTitle_idMascota}" required="true" requiredMessage="#{bundle.EditMascotaRequiredMessage_idMascota}"/>
+                    <p:message id="mascotaidMascota" for="idMascota"/>
+                    <h:outputLabel value="#{bundle.EditMascotaLabel_especie}" for="especie" />
+                    <p:inputText id="especie" value="#{mascotaController.selected.especie}" title="#{bundle.EditMascotaTitle_especie}" required="true" requiredMessage="#{bundle.EditMascotaRequiredMessage_especie}"/>
+                    <p:message id="mascotaespecie" for="especie"/>
+                    <h:outputLabel value="#{bundle.EditMascotaLabel_nombre}" for="nombre" />
+                    <p:inputText id="nombre" value="#{mascotaController.selected.nombre}" title="#{bundle.EditMascotaTitle_nombre}" required="true" requiredMessage="#{bundle.EditMascotaRequiredMessage_nombre}"/>
+                    <p:message id="mascotanombre" for="nombre"/>
+                    <h:outputLabel value="#{bundle.EditMascotaLabel_genero}" for="genero" />
+                    <p:inputText id="genero" value="#{mascotaController.selected.genero}" title="#{bundle.EditMascotaTitle_genero}" required="true" requiredMessage="#{bundle.EditMascotaRequiredMessage_genero}"/>
+                    <p:message id="mascotagenero" for="genero"/>
+                    <h:outputLabel value="#{bundle.EditMascotaLabel_raza}" for="raza" />
+                    <p:inputText id="raza" value="#{mascotaController.selected.raza}" title="#{bundle.EditMascotaTitle_raza}" required="true" requiredMessage="#{bundle.EditMascotaRequiredMessage_raza}"/>
+                    <p:message id="mascotaraza" for="raza"/>
+                    <h:outputLabel value="#{bundle.EditMascotaLabel_color}" for="color" />
+                    <p:inputText id="color" value="#{mascotaController.selected.color}" title="#{bundle.EditMascotaTitle_color}" required="true" requiredMessage="#{bundle.EditMascotaRequiredMessage_color}"/>
+                    <p:message id="mascotacolor" for="color"/>
+                    <h:outputLabel value="#{bundle.EditMascotaLabel_fechaNacimiento}" for="fechaNacimiento" />
+                    <p:inputText id="fechaNacimiento" value="#{mascotaController.selected.fechaNacimiento}" title="#{bundle.EditMascotaTitle_fechaNacimiento}" required="true" requiredMessage="#{bundle.EditMascotaRequiredMessage_fechaNacimiento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    <p:message id="mascotafechaNacimiento" for="fechaNacimiento"/>
+                    </p:inputText>
+                    <h:outputLabel value="#{bundle.EditMascotaLabel_peso}" for="peso" />
+                    <p:inputText id="peso" value="#{mascotaController.selected.peso}" title="#{bundle.EditMascotaTitle_peso}" required="true" requiredMessage="#{bundle.EditMascotaRequiredMessage_peso}"/>
+                    <p:message id="mascotapeso" for="peso"/>
+                    <h:outputLabel value="#{bundle.EditMascotaLabel_observaciones}" for="observaciones" />
+                    <p:inputText id="observaciones" value="#{mascotaController.selected.observaciones}" title="#{bundle.EditMascotaTitle_observaciones}" />
+                    <p:message id="mascotaobservaciones" for="observaciones"/>
+                    <h:outputLabel value="#{bundle.EditMascotaLabel_idCliente}" for="idCliente" />
+                    <h:selectOneMenu id="idCliente" value="#{mascotaController.selected.idCliente}" title="#{bundle.EditMascotaTitle_idCliente}" required="true" requiredMessage="#{bundle.EditMascotaRequiredMessage_idCliente}">
+                        <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <p:commandButton action="#{mascotaController.update}" value="#{bundle.EditMascotaSaveLink}"/>
+                
+                <br />
+                <br />
+                <p:button outcome="View" value="#{bundle.EditMascotaViewLink}"/>
+                <br />
+                <p:commandButton action="#{mascotaController.prepareList}" value="#{bundle.EditMascotaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <p:button outcome="/index" value="#{bundle.EditMascotaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

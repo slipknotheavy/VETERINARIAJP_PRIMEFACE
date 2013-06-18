@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMascotaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false" life="4000" /> 
+            <h:form id="formulario">
+                <h:panelGrid columns="1">
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_especie}" for="especie" />
+                    <p:inputText id="especie" value="#{mascotaController.selected.especie}" title="#{bundle.CreateMascotaTitle_especie}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_especie}"/>
+                    <p:message id="mascotaespecie" for="especie"/>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_nombre}" for="nombre" />
+                    <p:inputText id="nombre" value="#{mascotaController.selected.nombre}" title="#{bundle.CreateMascotaTitle_nombre}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_nombre}"/>
+                    <p:message id="mascotanombre" for="nombre"/>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_genero}" for="genero" />
+                    <p:inputText id="genero" value="#{mascotaController.selected.genero}" title="#{bundle.CreateMascotaTitle_genero}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_genero}"/>
+                    <p:message id="mascotagenero" for="genero"/>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_raza}" for="raza" />
+                    <p:inputText id="raza" value="#{mascotaController.selected.raza}" title="#{bundle.CreateMascotaTitle_raza}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_raza}"/>
+                    <p:message id="mascotaraza" for="raza"/>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_color}" for="color" />
+                    <p:inputText id="color" value="#{mascotaController.selected.color}" title="#{bundle.CreateMascotaTitle_color}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_color}"/>
+                    <p:message id="mascotacolor" for="color"/>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_fechaNacimiento}" for="fechaNacimiento" />
+                    <p:inputText id="fechaNacimiento" value="#{mascotaController.selected.fechaNacimiento}" title="#{bundle.CreateMascotaTitle_fechaNacimiento}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_fechaNacimiento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    <p:message id="mascotafechaNacimiento" for="fechaNacimiento"/>
+                    </p:inputText>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_peso}" for="peso" />
+                    <p:inputText id="peso" value="#{mascotaController.selected.peso}" title="#{bundle.CreateMascotaTitle_peso}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_peso}"/>
+                    <p:message id="mascotapeso" for="peso"/>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_observaciones}" for="observaciones" />
+                    <p:inputText id="observaciones" value="#{mascotaController.selected.observaciones}" title="#{bundle.CreateMascotaTitle_observaciones}" />
+                    <p:message id="mascotaobservaciones" for="observaciones"/>
+                </h:panelGrid>
+                <br />
+                <p:commandButton action="#{mascotaController.create}"
+                                 value="#{bundle.CreateMascotaSaveLink}"
+                                 process="@this, formulario"
+                                 update=":msgs"/>
+                
+                <br />
+                <br />
+                <p:commandButton action="#{mascotaController.prepareList}" value="#{bundle.CreateMascotaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <p:button outcome="/index" value="#{bundle.CreateMascotaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

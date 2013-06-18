@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFacturaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="1">
+                    <h:outputLabel value="#{bundle.EditFacturaLabel_idFactura}" for="idFactura" />
+                    <p:inputText id="idFactura" value="#{facturaController.selected.idFactura}" title="#{bundle.EditFacturaTitle_idFactura}" required="true" requiredMessage="#{bundle.EditFacturaRequiredMessage_idFactura}"/>
+                    <p:message id="facturaidFactura" for="idFactura"/>
+                    <h:outputLabel value="#{bundle.EditFacturaLabel_fechaFactura}" for="fechaFactura" />
+                    <p:inputText id="fechaFactura" value="#{facturaController.selected.fechaFactura}" title="#{bundle.EditFacturaTitle_fechaFactura}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                           <p:message id="facturafechaFactura" for="fechaFactura"/>
+                    </p:inputText>
+                    <h:outputLabel value="#{bundle.EditFacturaLabel_idMascota}" for="idMascota" />
+                    <h:selectOneMenu id="idMascota" value="#{facturaController.selected.idMascota}" title="#{bundle.EditFacturaTitle_idMascota}" >
+                        <f:selectItems value="#{mascotaController.itemsAvailableSelectOne}"/>
+                       <p:message id="idMascota" for="idMascota"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <p:commandButton action="#{facturaController.update}" value="#{bundle.EditFacturaSaveLink}"/>
+                
+                <br />
+                <br />
+                <p:button outcome="View" value="#{bundle.EditFacturaViewLink}"/>
+                <br />
+                <p:commandButton action="#{facturaController.prepareList}" value="#{bundle.EditFacturaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <p:button outcome="/index" value="#{bundle.EditFacturaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

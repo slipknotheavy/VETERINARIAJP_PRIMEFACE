@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDetalleFacturaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <p:growl id="msgs" showDetail="false" sticky="false" life="4000" /> 
+            
+            <h:form id="formulario">
+                <h:panelGrid columns="1">
+                    
+                    <h:outputLabel value="#{bundle.CreateDetalleFacturaLabel_valor}" for="valor" />
+                    <p:inputText id="valor" value="#{detalleFacturaController.selected.valor}" title="#{bundle.CreateDetalleFacturaTitle_valor}" required="true" requiredMessage="#{bundle.CreateDetalleFacturaRequiredMessage_valor}"/>
+                    <p:message id="detalleFacturavalor" for="valor"/>
+                    <h:outputLabel value="#{bundle.CreateDetalleFacturaLabel_cantidad}" for="cantidad" />
+                    <p:inputText id="cantidad" value="#{detalleFacturaController.selected.cantidad}" title="#{bundle.CreateDetalleFacturaTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateDetalleFacturaRequiredMessage_cantidad}"/>
+                    <p:message id="detalleFacturacantidad" for="cantidad"/>
+                </h:panelGrid>
+                <br />
+                <p:commandButton action="#{detalleFacturaController.create}" 
+                                 value="#{bundle.CreateDetalleFacturaSaveLink}"
+                                 process="@this, formulario"
+                                 update=":msgs"/>
+                
+                <br />
+                <br />
+                <p:commandButton action="#{detalleFacturaController.prepareList}" value="#{bundle.CreateDetalleFacturaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <p:button outcome="/index" value="#{bundle.CreateDetalleFacturaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
